@@ -1,0 +1,17 @@
+{
+  "file_name": "WhatsApp Audio 2026-07-28 at 9.54.18 PM.aac",
+  "file_path": "C:\\Users\\DELL\\Desktop\\HyperAI_Dedicated_Projects\\AUDIO_AUTOMATION_SYSTEM\\AUDIOS\\WhatsApp Audio 2026-07-28 at 9.54.18 PM.aac",
+  "engine": "AI4Bharat IndicConformer (Chunked ASR)",
+  "language": "hi",
+  "duration": 8.19,
+  "elapsed_seconds": 3.45,
+  "full_text": "नमस्कार सर मैं प्रिया बात कर रही हूँ मैम दो मिनट बच्च करें थोड़ा सा है",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 8.19,
+      "text": "नमस्कार सर मैं प्रिया बात कर रही हूँ मैम दो मिनट बच्च करें थोड़ा सा है"
+    }
+  ]
+}

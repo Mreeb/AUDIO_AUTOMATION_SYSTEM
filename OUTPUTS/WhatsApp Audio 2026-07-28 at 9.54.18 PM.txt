@@ -1,0 +1,11 @@
+Source File: WhatsApp Audio 2026-07-28 at 9.54.18 PM.aac
+Engine: AI4Bharat IndicConformer (Chunked ASR)
+Language: hi
+Duration: 8.19 seconds
+============================================================
+
+नमस्कार सर मैं प्रिया बात कर रही हूँ मैम दो मिनट बच्च करें थोड़ा सा है
+
+============================================================
+TIMESTAMPED FULL TRANSCRIPTION SEGMENTS:
+[0.0s -> 8.19s] नमस्कार सर मैं प्रिया बात कर रही हूँ मैम दो मिनट बच्च करें थोड़ा सा है
