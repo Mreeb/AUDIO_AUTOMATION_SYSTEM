@@ -1,0 +1,19 @@
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python Cache & Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Temporary Files & OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Local Model Caches
+.cache/
