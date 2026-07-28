@@ -1,0 +1,99 @@
+===============================================================================
+                       INDICCALL AI - SYSTEM MANUAL
+         Transcribe and Analyze Hindi-English Business Calls
+===============================================================================
+
+PRODUCT NAME : IndicCall AI
+ASR ENGINE   : AI4Bharat IndicConformer (INT8 Quantized ONNX)
+STACK        : Python (FastAPI) + React 19 + TypeScript + Tailwind CSS
+
+-------------------------------------------------------------------------------
+1. QUICK START (ONE-CLICK LAUNCHERS)
+-------------------------------------------------------------------------------
+For initial setup and single-click running on Windows:
+
+1. Setup Environment (Run Once):
+   Double-click `setup.bat` in the project root folder.
+   This sets up Python `.venv`, installs PyTorch-free ASR dependencies, and
+   installs React frontend packages.
+
+2. Launch Web Application (Backend API + React Frontend):
+   Double-click `run_app.bat` in the project root folder.
+   - Backend API starts at : http://127.0.0.1:8000
+   - React Dashboard starts at: http://127.0.0.1:5173
+
+3. Run CLI Transcriber (Command Line Batch Mode):
+   Double-click `transcribe.bat` or run:
+   .venv\Scripts\python.exe main.py --audio AUDIOS/1.aac --engine indic-conformer
+
+
+-------------------------------------------------------------------------------
+2. MANUAL COMMAND LINE INSTRUCTIONS
+-------------------------------------------------------------------------------
+
+A. PREREQUISITES:
+   - Python 3.10 or higher
+   - Node.js v18+ and NPM
+
+B. STEP-BY-STEP MANUAL LAUNCH:
+
+   [STEP 1] Start Backend API Server:
+   ---------------------------------
+   1. Open Terminal in the project root directory.
+   2. Activate Python environment and run FastAPI app:
+      .venv\Scripts\python.exe app.py
+   3. Server will start on http://127.0.0.1:8000
+
+   [STEP 2] Start React SaaS Dashboard:
+   -----------------------------------
+   1. Open a second Terminal window in the project root directory.
+   2. Navigate to the `frontend` folder:
+      cd frontend
+   3. Install dependencies (if not installed yet):
+      npm install
+   4. Start Vite development server:
+      npm run dev -- --host 127.0.0.1 --port 5173
+   5. Open browser at http://127.0.0.1:5173
+
+
+-------------------------------------------------------------------------------
+3. HOW TO USE THE WEB DASHBOARD
+-------------------------------------------------------------------------------
+
+1. Upload / Select Audio:
+   - Drag & drop your call audio file (.mp3, .wav, .m4a, .aac, .webm) into the
+     upload area on the 'New Transcription' screen.
+   - Or click any pre-loaded sample call buttons (1.aac, 2.aac, 3.aac).
+
+2. Transcribe Call:
+   - Click the primary button 'Start AI Transcription'.
+   - Monitor live progress through 5 stages: Uploading -> Preparing ->
+     Transcribing -> Formatting -> Completed.
+
+3. View & Export Transcripts:
+   - View timestamped audio segments or continuous Devanagari Hindi text.
+   - Edit transcript text directly on screen if needed.
+   - Click TXT, SRT, VTT, or JSON buttons to download subtitles and metadata.
+
+4. View Extracted Sales Leads:
+   - Click the 'Extracted Sales Lead Insights' sub-tab to view extracted fields:
+     * Salesperson Name
+     * Customer Location
+     * Products Discussed
+     * Customer Requirements & Rate List Requests
+     * Payment Terms & Objections
+     * Exact Timestamps & Supporting Quotes from Speech
+
+5. Dashboard & History:
+   - Click 'Dashboard' in the left sidebar to view call volume metrics, total
+     speech duration, success rate, and average ASR confidence scores.
+
+
+-------------------------------------------------------------------------------
+4. TROUBLESHOOTING
+-------------------------------------------------------------------------------
+- Port Conflicts: If port 8000 or 5173 is already in use by another app, you can
+  change the port in `app.py` or `frontend/vite.config.ts`.
+- Low-End PC Performance: The system uses INT8 ONNX quantization with 10-12s audio
+  chunking. It runs on CPU under 300MB RAM without requiring GPU or PyTorch.
+===============================================================================
