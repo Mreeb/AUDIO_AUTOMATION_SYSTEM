@@ -43,18 +43,6 @@ export interface TranscriptResult {
   createdAt: string;
 }
 
-export interface ExtractedField {
-  key: string;
-  label: string;
-  value: string;
-  confidence: 'high' | 'medium' | 'low';
-  confidenceScore: number;
-  timestamp: string;
-  evidence: string;
-  isDetected: boolean;
-  category: 'contact' | 'product' | 'qualification' | 'objection' | 'next_steps';
-}
-
 export interface TranscriptionJob {
   id: string;
   file: AudioFile;
@@ -65,7 +53,6 @@ export interface TranscriptionJob {
   error?: string;
   createdAt: string;
   result?: TranscriptResult;
-  extractedFields?: ExtractedField[];
 }
 
 export interface TranscriptionHistoryItem {
@@ -79,8 +66,6 @@ export interface TranscriptionHistoryItem {
   engine: string;
   fullText: string;
   segmentCount: number;
-  extractedLeadCount: number;
   audioUrl?: string;
   transcriptResult?: TranscriptResult;
-  extractedFields?: ExtractedField[];
 }

@@ -2,7 +2,6 @@ import type {
   AudioFile,
   TranscriptionJob,
   TranscriptResult,
-  ExtractedField,
   TranscriptionHistoryItem,
   ProcessingStage
 } from '../types';
@@ -45,8 +44,7 @@ export const MOCK_HISTORY: TranscriptionHistoryItem[] = [
     confidence: 0.94,
     engine: 'AI4Bharat IndicConformer',
     fullText: 'हेलो नमस्कार सर मैं श्रिया बात कर रही हूँ जी बताइए सर हमारी कंपनी कार्य सप्लाई करती है जैसे की कम प्रेस एयर कंडोम कुलिंग दूसरे डिपार्टमेंट मैं बात कर रहा हूँ जी सर बात कर रहा हूँ न्यू दिल्ली बच्ची हुई कर दोको जब भी जरूरत पड़े ठीक है आप शेयर कर दो व्हाट्सएप पे कर दो व्हाट्सएपे क्योंकि इसमें यही नंबर दिया जाएगा आपका जी जी सर ठीक है',
-    segmentCount: 3,
-    extractedLeadCount: 7
+    segmentCount: 3
   },
   {
     id: 'hist-2',
@@ -57,9 +55,8 @@ export const MOCK_HISTORY: TranscriptionHistoryItem[] = [
     language: 'Hindi (hi)',
     confidence: 0.91,
     engine: 'AI4Bharat IndicConformer',
-    fullText: 'सर आपने कॉल किया था हाँ मैंने कॉल तो किया था नहीं किया चले चले को नौन भाई कोई बुराई नहीं कोई शुक्रिया ये अभी मैं संभाल कहूँ और से मेरा डेली से भी आता है अपना कानपुर से आता है तो आप कहाँ से बोल रहे हैं डी से बोल रहे हैं आप जगह से गुरु हरे कृष्ण नगर जैसे भी हमारा अनिल से आता है माल भूषण वाले से आता है माल तो जैसे जो रेट्स दिए गए हैं तो वो रेट्स में कुछ लेस होगा की उसी माल मिलेगा रेट में ही माल मिलेगा अच्छा अच्छा माल अच्छा जैसे जैसे माल आप डिस्पैच करते हो तो कैसे बेचते हो मतलब जैसे मैंने आपको जो ऑर्डर दिया आपको पास सामान का तो आप वहाँ से देखिए कैसे देंगे आप कैसे सप्लाई कर देंगे सर उस बारे में आपकी सर से बात कर रहे और माल सप्लाई करना हमारा जो है दिल्ली से माल आता है दिल्ली से खजुरा ट्राइवल्स चलती है जांच के लिए खजुरा और ट्राइवल्स उससे आता है हमारा तो जैसे भी दो चार आइटम बताएंगे तो पेमेंट तो पहले ही करना पड़ेगा हमें ऑनलाइन जी सर पेमेंट पहले करना करना पड़ेगा फिर हम सप्लाई करने के लिए माल बैसे कश्मीर नहीं है मतलब जैसे ही माल आता ऑर्डर लगा दिया फिर भी नहीं आ रहा चार दिन बाद ज्यादा वो पेमेंट कर देते हैं तो इतना कोई इशू नहीं है वो वही कहने का है ना कि आप जैसे आप बोल रहे हो अच्छा आपका कोई विजिटिंग कार्ड भी है आप शेयर करते हैं व्हाट्सएप करो मेरे को फिर मैं सोचा क्योंकि अब सीजन भी थोड़ा सा कम रह गया पहले स्टार्टिंग आपका जैसे मोटर है कंडेंसर है ठीक है यार अच्छा अब जैसा हम चार्ज पीस स्टार्टिंग में किस मंगाया कोई भी आइटम पाँच साल कर दिया मैंने आपको मिल जाएगा ना अच्छा तो आपके ओनर से बात हुई मेरी बात में हाँ हाँ मैं आपकी तरह से बात करा देती हूँ अच्छा अच्छा',
-    segmentCount: 14,
-    extractedLeadCount: 9
+    fullText: 'सरआपने कॉल किया था हाँ मैंने कॉल तो किया था नहीं किया चले चले को नौन भाई कोई बुराई नहीं कोई शुक्रिया ये अभी मैं संभाल कहूँ और से मेरा डेली से भी आता है अपना कानपुर से आता है तो आप कहाँ से बोल रहे हैं डी से बोल रहे हैं आप जगह से गुरु हरे कृष्ण नगर जैसे भी हमारा अनिल से आता है माल भूषण वाले से आता है माल तो जैसे जो रेट्स दिए गए हैं तो वो रेट्स में कुछ लेस होगा की उसी माल मिलेगा रेट में ही माल मिलेगा अच्छा अच्छा माल अच्छा जैसे जैसे माल आप डिस्पैच करते हो तो कैसे बेचते हो मतलब जैसे मैंने आपको जो ऑर्डर दिया आपको पास सामान का तो आप वहाँ से देखिए कैसे देंगे आप कैसे सप्लाई कर देंगे सर उस बारे में आपकी सर से बात कर रहे और माल सप्लाई करना हमारा जो है दिल्ली से माल आता है दिल्ली से खजुरा ट्राइवल्स चलती है जांच के लिए खजुरा और ट्राइवल्स उससे आता है हमारा तो जैसे भी दो चार आइटम बताएंगे तो पेमेंट तो पहले ही करना पड़ेगा हमें ऑनलाइन जी सर पेमेंट पहले करना करना पड़ेगा फिर हम सप्लाई करने के लिए माल बैसे कश्मीर नहीं है मतलब जैसे ही माल आता ऑर्डर लगा दिया फिर भी नहीं आ रहा चार दिन बाद ज्यादा वो पेमेंट कर देते हैं तो इतना कोई इशू नहीं है वो वही कहने का है ना कि आप जैसे आप बोल रहे हो अच्छा आपका कोई विजिटिंग कार्ड भी है आप शेयर करते हैं व्हाट्सएप करो मेरे को फिर मैं सोचा क्योंकि अब सीजन भी थोड़ा सा कम रह गया पहले स्टार्टिंग आपका जैसे मोटर है कंडेंसर है ठीक है यार अच्छा अब जैसा हम चार्ज पीस स्टार्टिंग में किस मंगाया कोई भी आइटम पाँच साल कर दिया मैंने आपको मिल जाएगा ना अच्छा तो आपके ओनर से बात हुई मेरी बात में हाँ हाँ मैं आपकी तरह से बात करा देती हूँ अच्छा अच्छा',
+    segmentCount: 14
   },
   {
     id: 'hist-3',
@@ -71,8 +68,7 @@ export const MOCK_HISTORY: TranscriptionHistoryItem[] = [
     confidence: 0.96,
     engine: 'AI4Bharat IndicConformer',
     fullText: 'हेलो नमस्ते सर मैं प्रिया बात कर रही हूँ ग्रीन से सर हमारी कंपनी कार है सप्लाई करती है जैसे की हाँ हाँ हाँ हाँ यूनिवर्सल का बैठा कितने गायर का कौन सा पार्ट कौन सा गाड़ी का वो तो यूनिवर्सल में लग जाता है सारे गाड़ियों का कम पेशा ये सर नहीं रिक्वायरमेंट बहुत सारी होती है मेरे पास मैं तो आपको लाइक नहीं कर रखा फेसबुक पे पढ़ा हुआ था ओके सर ओके मैं आपको रेट लिस्ट व्हाट्सएप पे शेयर कर देती हूँ और जो भी चीजें आपके पास हो जैसे आपके पास कंड टी सब इसकी डिस्क्रिप्शन अगर पॉसिबिलिटी हो तो यू कैन सेंड मे दिस्क्रिप्शन अबाउटिशन पास परिटेल शेयर कर देती हूँ टा में वास नंबर',
-    segmentCount: 6,
-    extractedLeadCount: 8
+    segmentCount: 6
   }
 ];
 
@@ -111,208 +107,7 @@ export async function uploadAudio(file: File): Promise<AudioFile> {
 }
 
 /**
- * Dynamic NLP Field Extractor: extracts unique lead intelligence from ANY given transcript text
- */
-export function extractFieldsFromText(text: string, _fileName: string): ExtractedField[] {
-  const fields: ExtractedField[] = [];
-
-  // 1. Salesperson Name
-  if (text.includes('श्रिया')) {
-    fields.push({
-      key: 'salesperson_name',
-      label: 'Salesperson Name',
-      value: 'Shriya (श्रिया)',
-      confidence: 'high',
-      confidenceScore: 0.98,
-      timestamp: '00:00:02',
-      evidence: 'हेलो नमस्कार सर मैं श्रिया बात कर रही हूँ',
-      isDetected: true,
-      category: 'contact'
-    });
-  } else if (text.includes('प्रिया')) {
-    fields.push({
-      key: 'salesperson_name',
-      label: 'Salesperson Name',
-      value: 'Priya (प्रिया)',
-      confidence: 'high',
-      confidenceScore: 0.98,
-      timestamp: '00:00:02',
-      evidence: 'हेलो नमस्ते सर मैं प्रिया बात कर रही हूँ ग्रीन से',
-      isDetected: true,
-      category: 'contact'
-    });
-  } else {
-    fields.push({
-      key: 'salesperson_name',
-      label: 'Salesperson Name',
-      value: 'Sales Representative',
-      confidence: 'medium',
-      confidenceScore: 0.80,
-      timestamp: '00:00:04',
-      evidence: text.substring(0, Math.min(60, text.length)),
-      isDetected: true,
-      category: 'contact'
-    });
-  }
-
-  // 2. Customer Name / Dealer
-  if (text.includes('अनिल') || text.includes('भूषण')) {
-    fields.push({
-      key: 'customer_name',
-      label: 'Customer / Dealer Name',
-      value: 'Anil / Bhushan Dealer',
-      confidence: 'medium',
-      confidenceScore: 0.86,
-      timestamp: '00:00:38',
-      evidence: 'जैसे भी हमारा अनिल से आता है माल भूषण वाले से आता है...',
-      isDetected: true,
-      category: 'contact'
-    });
-  } else {
-    fields.push({
-      key: 'customer_name',
-      label: 'Customer Name',
-      value: 'Not detected',
-      confidence: 'low',
-      confidenceScore: 0.20,
-      timestamp: 'N/A',
-      evidence: 'No specific customer name uttered in audio',
-      isDetected: false,
-      category: 'contact'
-    });
-  }
-
-  // 3. Customer Location
-  if (text.includes('दिल्ली') || text.includes('न्यू दिल्ली')) {
-    fields.push({
-      key: 'customer_location',
-      label: 'Customer Location',
-      value: 'New Delhi (न्यू दिल्ली)',
-      confidence: 'high',
-      confidenceScore: 0.95,
-      timestamp: '00:00:24',
-      evidence: 'न्यू दिल्ली बच्ची हुई कर दो...',
-      isDetected: true,
-      category: 'contact'
-    });
-  } else if (text.includes('कानपुर') || text.includes('हरे कृष्ण नगर')) {
-    fields.push({
-      key: 'customer_location',
-      label: 'Customer Location',
-      value: 'Kanpur / Guru Nanak Nagar',
-      confidence: 'high',
-      confidenceScore: 0.93,
-      timestamp: '00:00:20',
-      evidence: 'अपना कानपुर से आता है... गुरु हरे कृष्ण नगर',
-      isDetected: true,
-      category: 'contact'
-    });
-  } else {
-    fields.push({
-      key: 'customer_location',
-      label: 'Customer Location',
-      value: 'Not detected',
-      confidence: 'low',
-      confidenceScore: 0.30,
-      timestamp: 'N/A',
-      evidence: 'Location not explicitly mentioned',
-      isDetected: false,
-      category: 'contact'
-    });
-  }
-
-  // 4. Products Discussed
-  const detectedProducts: string[] = [];
-  if (text.includes('कम प्रेस') || text.includes('एयर') || text.includes('कूलिंग')) detectedProducts.push('AC Compressor & Cooling Units');
-  if (text.includes('मोटर') || text.includes('कंडेंसर')) detectedProducts.push('Fan Motors & AC Condensers');
-  if (text.includes('यूनिवर्सल')) detectedProducts.push('Universal Car Spare Parts');
-
-  fields.push({
-    key: 'products_discussed',
-    label: 'Products Discussed',
-    value: detectedProducts.length > 0 ? detectedProducts.join(', ') : 'Automotive Spare Parts',
-    confidence: 'high',
-    confidenceScore: 0.94,
-    timestamp: '00:00:10',
-    evidence: text.substring(0, Math.min(100, text.length)),
-    isDetected: true,
-    category: 'product'
-  });
-
-  // 5. Customer Requirements / Price List
-  if (text.includes('व्हाट्सएप') || text.includes('रेट लिस्ट')) {
-    fields.push({
-      key: 'customer_requirements',
-      label: 'Customer Requirements',
-      value: 'Product catalog & rate list on WhatsApp',
-      confidence: 'high',
-      confidenceScore: 0.95,
-      timestamp: '00:00:32',
-      evidence: 'आप शेयर कर दो व्हाट्सएप पे कर दो व्हाट्सएपे...',
-      isDetected: true,
-      category: 'qualification'
-    });
-  } else {
-    fields.push({
-      key: 'customer_requirements',
-      label: 'Customer Requirements',
-      value: 'General business inquiry',
-      confidence: 'medium',
-      confidenceScore: 0.75,
-      timestamp: '00:00:15',
-      evidence: text.substring(0, Math.min(80, text.length)),
-      isDetected: true,
-      category: 'qualification'
-    });
-  }
-
-  // 6. Payment & Objections
-  if (text.includes('पेमेंट') || text.includes('ऑनलाइन')) {
-    fields.push({
-      key: 'payment_discussion',
-      label: 'Payment Discussion',
-      value: 'Online advance payment mandatory before dispatch',
-      confidence: 'high',
-      confidenceScore: 0.96,
-      timestamp: '00:01:28',
-      evidence: 'पेमेंट तो पहले ही करना पड़ेगा हमें ऑनलाइन जी सर',
-      isDetected: true,
-      category: 'qualification'
-    });
-  } else if (text.includes('लेस') || text.includes('रेट')) {
-    fields.push({
-      key: 'objections',
-      label: 'Customer Objections / Price',
-      value: 'Price discount negotiation requested',
-      confidence: 'medium',
-      confidenceScore: 0.85,
-      timestamp: '00:00:44',
-      evidence: 'जो रेट्स दिए गए हैं तो वो रेट्स में कुछ लेस होगा',
-      isDetected: true,
-      category: 'objection'
-    });
-  }
-
-  // 7. Follow-up Action
-  if (text.includes('व्हाट्सएप') || text.includes('ओनर') || text.includes('बात करा')) {
-    fields.push({
-      key: 'follow_up_action',
-      label: 'Follow-up Action',
-      value: text.includes('ओनर') ? 'Connect call with company owner & share visiting card' : 'Send rate list on WhatsApp',
-      confidence: 'high',
-      confidenceScore: 0.95,
-      timestamp: '00:00:42',
-      evidence: text.includes('ओनर') ? 'हाँ हाँ मैं आपकी ओनर से बात करा देती हूँ' : 'ठीक है आप शेयर कर दो व्हाट्सएप पे',
-      isDetected: true,
-      category: 'next_steps'
-    });
-  }
-
-  return fields;
-}
-
-/**
- * Service function: Start Transcription (Calls Live FastAPI Backend if reachable, or generates unique sample results)
+ * Service function: Start Transcription
  */
 export async function startTranscription(
   file: AudioFile,
@@ -345,7 +140,7 @@ export async function startTranscription(
     if (file.fileObject) {
       formData.append('file', file.fileObject);
     } else {
-      const sampleFileName = file.name.split(' ')[0]; // "1.aac", "2.aac", "3.aac"
+      const sampleFileName = file.name.split(' ')[0];
       formData.append('existing_file_name', sampleFileName);
     }
 
@@ -357,7 +152,6 @@ export async function startTranscription(
     if (response.ok) {
       const data = await response.json();
       if (data.success && data.result) {
-        // FIX: Extract full_text or text returned by Python engine!
         fullText = data.result.full_text || data.result.text || '';
         duration = data.result.duration || duration;
         if (data.result.segments && Array.isArray(data.result.segments)) {
@@ -374,14 +168,12 @@ export async function startTranscription(
     console.warn('Backend API connection failed, switching to sample transcription mapping.', err);
   }
 
-  // If backend returned text, build segments if none
   if (fullText && segments.length === 0) {
     segments = [
       { id: 1, start: 0, end: duration, text: fullText }
     ];
   }
 
-  // Offline / Sample fallback if backend API is not available
   if (!fullText) {
     if (file.name.includes('1.aac') || file.name.includes('1')) {
       fullText = 'हेलो नमस्कार सर मैं श्रिया बात कर रही हूँ जी बताइए सर हमारी कंपनी कार्य सप्लाई करती है जैसे की कम प्रेस एयर कंडोम कुलिंग दूसरे डिपार्टमेंट मैं बात कर रहा हूँ जी सर बात कर रहा हूँ न्यू दिल्ली बच्ची हुई कर दोको जब भी जरूरत पड़े ठीक है आप शेयर कर दो व्हाट्सएप पे कर दो व्हाट्सएपे क्योंकि इसमें यही नंबर दिया जाएगा आपका जी जी सर ठीक है';
@@ -422,7 +214,7 @@ export async function startTranscription(
   updateStage('formatting', 'Formatting raw Devanagari Hindi text & building timestamps...', 90, 2);
   await new Promise((r) => setTimeout(r, 600));
 
-  updateStage('completed', 'Transcription and Lead Extraction completed successfully!', 100, 0);
+  updateStage('completed', 'Transcription completed successfully!', 100, 0);
 
   const result: TranscriptResult = {
     id: `transcript-${Date.now()}`,
@@ -436,8 +228,6 @@ export async function startTranscription(
     createdAt: new Date().toISOString()
   };
 
-  const extractedFields = extractFieldsFromText(fullText, file.name);
-
   return {
     id: jobId,
     file,
@@ -446,8 +236,7 @@ export async function startTranscription(
     stageMessage: 'Completed',
     estimatedTimeRemaining: 0,
     createdAt: new Date().toISOString(),
-    result,
-    extractedFields
+    result
   };
 }
 

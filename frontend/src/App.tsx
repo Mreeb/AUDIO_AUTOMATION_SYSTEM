@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   Mic,
-  Users,
   Settings,
-  Sparkles,
   Volume2,
   CheckCircle2,
   Clock,
@@ -20,7 +18,6 @@ import { AudioDropzone } from './components/AudioDropzone';
 import { AudioPreview } from './components/AudioPreview';
 import { TranscriptionProgress } from './components/TranscriptionProgress';
 import { TranscriptViewer } from './components/TranscriptViewer';
-import { ExtractionResults } from './components/ExtractionResults';
 import { RecentTranscriptionsTable } from './components/RecentTranscriptionsTable';
 import { EmptyState } from './components/EmptyState';
 import { ErrorState } from './components/ErrorState';
@@ -47,7 +44,6 @@ export function App() {
 
   const [selectedAudio, setSelectedAudio] = useState<AudioFile | null>(null);
   const [currentJob, setCurrentJob] = useState<TranscriptionJob | null>(null);
-  const [resultsTab, setResultsTab] = useState<'transcript' | 'analytics'>('transcript');
 
   const [historyItems, setHistoryItems] = useState<TranscriptionHistoryItem[]>(MOCK_HISTORY);
 
@@ -93,9 +89,7 @@ export function App() {
           engine: 'AI4Bharat IndicConformer',
           fullText: finalJob.result.fullText,
           segmentCount: finalJob.result.segments.length,
-          extractedLeadCount: finalJob.extractedFields?.length || 0,
-          transcriptResult: finalJob.result,
-          extractedFields: finalJob.extractedFields
+          transcriptResult: finalJob.result
         };
         setHistoryItems((prev) => [newItem, ...prev]);
       }
@@ -156,8 +150,7 @@ export function App() {
       stageMessage: 'Completed',
       estimatedTimeRemaining: 0,
       createdAt: item.date,
-      result,
-      extractedFields: item.extractedFields
+      result
     });
 
     setActiveTab('new_transcription');
@@ -190,10 +183,10 @@ export function App() {
                 <div>
                   <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 flex items-center gap-2">
                     <Mic className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-                    New Call Transcription & AI Analytics
+                    New Audio Call Transcription
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                    Upload your Hindi-English business call audio to generate raw transcripts and extracted leads.
+                    Upload your Hindi-English business call audio to generate raw Devanagari transcripts and subtitle files.
                   </p>
                 </div>
                 {selectedAudio && (
@@ -240,42 +233,10 @@ export function App() {
 
               {currentJob && currentJob.stage === 'completed' && currentJob.result && (
                 <div className="space-y-6 animate-fadeIn">
-                  <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md">
-                    <button
-                      onClick={() => setResultsTab('transcript')}
-                      className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-                        resultsTab === 'transcript'
-                          ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
-                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <Mic className="w-4 h-4" />
-                      <span>Full Devanagari Transcript ({currentJob.result.segments.length} Segments)</span>
-                    </button>
-
-                    <button
-                      onClick={() => setResultsTab('analytics')}
-                      className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-                        resultsTab === 'analytics'
-                          ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
-                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      <span>Extracted Sales Lead Insights ({currentJob.extractedFields?.length || 0})</span>
-                    </button>
-                  </div>
-
-                  {resultsTab === 'transcript' && (
-                    <TranscriptViewer
-                      result={currentJob.result}
-                      onTranscribeAnother={handleResetNewTranscription}
-                    />
-                  )}
-
-                  {resultsTab === 'analytics' && currentJob.extractedFields && (
-                    <ExtractionResults fields={currentJob.extractedFields} />
-                  )}
+                  <TranscriptViewer
+                    result={currentJob.result}
+                    onTranscribeAnother={handleResetNewTranscription}
+                  />
                 </div>
               )}
             </div>
@@ -288,7 +249,7 @@ export function App() {
                   Call Analytics Overview
                 </h2>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  High-level performance metrics across all call transcriptions and AI extractions.
+                  High-level performance metrics across all call transcriptions.
                 </p>
               </div>
 
@@ -402,53 +363,6 @@ export function App() {
             </div>
           )}
 
-          {activeTab === 'leads' && (
-            <div className="max-w-6xl mx-auto space-y-6 animate-fadeIn">
-              <div>
-                <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                  <Users className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-                  Extracted Sales Lead Intelligence
-                </h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Structured lead records automatically extracted from call conversations.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {historyItems.map((item, idx) => (
-                  <div
-                    key={item.id}
-                    className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-4 hover:border-indigo-500 transition-all cursor-pointer"
-                    onClick={() => handleViewHistoryItem(item)}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-                        Lead #{idx + 1}
-                      </span>
-                      <span className="text-xs text-slate-400 font-mono">{item.date}</span>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-extrabold text-slate-900 dark:text-slate-100">
-                        {item.fileName}
-                      </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
-                        "{item.fullText}"
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
-                      <span className="font-bold text-indigo-600 dark:text-indigo-400">
-                        {item.extractedLeadCount} Fields Extracted
-                      </span>
-                      <span className="text-slate-400">Duration: {item.duration}s</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
           {activeTab === 'settings' && (
             <div className="max-w-4xl mx-auto space-y-6 animate-fadeIn">
               <div>
@@ -457,7 +371,7 @@ export function App() {
                   Engine & Model Settings
                 </h2>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Configure IndicCall AI transcription backends, language defaults, and lead extraction preferences.
+                  Configure IndicCall AI transcription backends and export preferences.
                 </p>
               </div>
 

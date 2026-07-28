@@ -4,7 +4,6 @@ import {
   LayoutDashboard,
   Mic,
   History,
-  Users,
   Settings,
   ChevronLeft,
   ChevronRight,
@@ -12,7 +11,7 @@ import {
   Volume2
 } from 'lucide-react';
 
-export type NavTab = 'dashboard' | 'new_transcription' | 'history' | 'leads' | 'settings';
+export type NavTab = 'dashboard' | 'new_transcription' | 'history' | 'settings';
 
 interface AppSidebarProps {
   activeTab: NavTab;
@@ -31,7 +30,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
     { id: 'new_transcription', label: 'New Transcription', icon: <Mic className="w-5 h-5" />, badge: 'AI' },
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: 'history', label: 'Transcription History', icon: <History className="w-5 h-5" /> },
-    { id: 'leads', label: 'Extracted Leads', icon: <Users className="w-5 h-5" /> },
     { id: 'settings', label: 'Settings', icon: <Settings className="w-5 h-5" /> },
   ];
 
@@ -51,7 +49,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               IndicCall AI
             </span>
             <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 truncate">
-              Indic ASR & Call Intelligence
+              Indic ASR Speech System
             </span>
           </div>
         )}
